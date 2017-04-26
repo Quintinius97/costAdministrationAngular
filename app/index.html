@@ -16,47 +16,81 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="simple-sidebar.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
-  <div class="left" style="background-color:red;">
-    <li>a</li>
-    <li>b</li>
-  </div>
-  <div class="right" style="background-color:yellow;">
-    <div class="row" style="background-color:black;">
-      <div class="col-md-12">
-        <h2>Left side Navigation bar (Fixed)</h2>
+  <div id="wrapper" class="toggled">
 
-        <p>Left side Navigation</p>
-      </div>
-      <div class="col-md-6" style="background-color:green;">
-        <h2>Left side Navigation bar (Fixed)</h2>
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav  ">
+        <li class="sidebar-brand">
+          <a href="#">{{user}}User</a>
+        </li>
+        <li>
+          <a href="#">List</a>
+        </li>
+        <li>
+          <a href="#">Grapgh</a>
+        </li>
+        <li>
+          <a href="#">Time</a>
+        </li>
 
-        <p>Left side Navigation</p>
-      </div>
-      <div class="col-md-6" style="background-color:blue;">
-        <h2>Left side Navigation bar (Fixed)</h2>
+      </ul>
+      <div class="sidebar-bottom">
+        <input type="text" placeholder="Enter something" id="title" class="side-input" />
+        <button type="button " class="btn btn-side-in">income</button>
+        <button type="button " class="btn btn-side-out">expense</button>
 
-        <p>Left side Navigation</p>
+
+
       </div>
     </div>
-    abcd
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id=" page-content-wrapper ">
+      <div class="container-fluid ">
+        <div class="row ">
+          <div class="col-md-6 ">
+            <h1>Simple Sidebar</h1>
+            <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will
+              appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear.
+              On small screens, the page content will be pushed off canvas.</p>
+            <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+            <a href="#menu-toggle " class="btn btn-default " id="menu-togglek ">Toggle Menu</a>
+          </div>
+          <div class="col-md-6 ">
+            <h1>Simple Sidebar</h1>
+            <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will
+              appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear.
+              On small screens, the page content will be pushed off canvas.</p>
+            <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+            <a href="#menu-toggle " class="btn btn-default " id="menu-toggle ">Toggle Menu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
   </div>
+  <!-- /#wrapper -->
 
 
   <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js "></script>
   -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+  <script src="bower_components/angular/angular.js "></script>
+  <script src="bower_components/angular-route/angular-route.js "></script>
+  <script src="app.js "></script>
+  <script src="view1/view1.js "></script>
+  <script src="view2/view2.js "></script>
+  <script src="components/version/version.js "></script>
+  <script src="components/version/version-directive.js "></script>
+  <script src="components/version/interpolate-filter.js "></script>
 </body>
 
 </html>
