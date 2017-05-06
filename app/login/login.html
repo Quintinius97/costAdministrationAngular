@@ -1,0 +1,69 @@
+<div class="container-fluid " ng-controller="loginCtrl">
+        <div class="row ">
+          <div class="col-md-6 ">
+            <h1>Login</h1>
+             <form class="form-horizontal">						
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Your Username</label>
+							<div class="cols-sm-10">
+								<div class="input-group">									
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Username" ng-model="username"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">Your Password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									
+									<input type="text" class="form-control" name="password" id="password"  placeholder="Enter your Password" ng-model="password"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group ">
+							<button type="button" class="btn btn-primary btn-lg btn-block login-button" ng-click="login()">Login</button>
+						</div>
+						
+					</form>
+          </div>
+          <div class="col-md-6 ">
+            <h1>Register</h1>
+             <form class="form-horizontal">
+						
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Your Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">									
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+								</div>
+							</div>
+						</div>
+                        <div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Your Username</label>
+							<div class="cols-sm-10">
+								<div class="input-group">									
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your displayed Name"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Your Email</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group ">
+							<button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+						</div>
+						
+					</form>
+          </div>
+        </div>
+      </div>
