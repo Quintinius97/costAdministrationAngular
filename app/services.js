@@ -1,6 +1,6 @@
 //app.service('backend', function ($http, $uibModal, $rootScope, Notification, $location) {
 app.service('backend', function ($http, $rootScope, $location) {
-   var baseURL = "http://localhost:3000/";
+    var baseURL = "http://localhost:3000/";
     console.log(baseURL);
 
     function success(successMessage) {
@@ -39,14 +39,14 @@ app.service('backend', function ($http, $rootScope, $location) {
             url: baseURL + route,
             data: payload,
             headers: {
-                "Content-Type":   "application/json"
+                "Content-Type": "application/json"
             },
             timeout: 10000
-        }).then(function  successCallback(response) {
+        }).then(function successCallback(response) {
             success(successMessage);
             callback(response);
             return response;
-        },  function  errorCallback(response) {
+        }, function errorCallback(response) {
             if (!customErrorHandling) {
                 error(response);
             }
@@ -70,11 +70,11 @@ app.service('backend', function ($http, $rootScope, $location) {
                 'Pragma': 'no-cache'
             },
             timeout: 5000
-        }).then(function  successCallback(response) {
+        }).then(function successCallback(response) {
             success(successMessage);
             callback(response);
             return response;
-        },  function  errorCallback(response) {
+        }, function errorCallback(response) {
             if (!customErrorHandling) {
                 error(response);
             }
@@ -92,11 +92,11 @@ app.service('backend', function ($http, $rootScope, $location) {
             method: 'PUT',
             url: baseURL + route,
             timeout: 5000
-        }).then(function  successCallback(response) {
+        }).then(function successCallback(response) {
             success(successMessage);
             callback(response);
             return response;
-        },  function  errorCallback(response) {
+        }, function errorCallback(response) {
             if (!customErrorHandling) {
                 error(response);
             }
@@ -114,11 +114,11 @@ app.service('backend', function ($http, $rootScope, $location) {
             method: 'DELETE',
             url: baseURL + route,
             timeout: 5000
-        }).then(function  successCallback(response) {
+        }).then(function successCallback(response) {
             success(successMessage);
             callback(response);
             return response;
-        },  function  errorCallback(response) {
+        }, function errorCallback(response) {
             if (!customErrorHandling) {
                 error(response);
             }
@@ -131,25 +131,47 @@ app.factory('AuthenticationFactory', function ($rootScope, $localStorage, $http,
     var service = {};
     service.Login = Login;
     service.Logout = Logout;
+    service.Register = Register;
     return service;
 
     function Login(username, password, callback) {
         var payload = {
-            "username": username ,
-                "password": password
-            
+            "username": username,
+            "password": password
         };
-        
+
         backend.post('user/login', payload, function (response) {
-            if (response.status >= 2000&&response.status < 300) {
+            if (response.status >= 200 && response.status < 300) {
                 console.log("Logged in success");
                 if (response.data.jwt) {
-                    $localStorage.currentUser = response.data;
+                    $rootScope.username = username;
                     $rootScope.loggedIn = true;
-                    $rootScope.isAdmin = $localStorage.currentUser.isAdmin;
-                    $rootScope.firstLogin = $localStorage.currentUser.firstLogin;
-                    $http.defaults.headers.common.Authorization = $localStorage.currentUser.jwt;
+                    $localStorage.currentJWT = response.data.jwt;
+                    $http.defaults.headers.common.Authorization = response.data.jwt;
+                    callback(response);
+                } else {
+                    callback(response);
+                }
+            } else {
+                callback(response);
+            }
+        });
+    }
+    function Register(name, username, password, callback) {
+        var payload = {
+            "username": username,
+            "name": name,
+            "password": password
+        };
 
+        backend.post('user/register', payload, function (response) {
+            if (response.status >= 200 && response.status < 300) {
+                console.log("Registered in success");
+                if (response.data.jwt) {
+                    $rootScope.loggedIn = true;
+                    $rootScope.username = username;
+                    $localStorage.currentJWT = response.data.jwt;
+                    $http.defaults.headers.common.Authorization = response.data.jwt;
                     callback(response);
                 } else {
                     callback(response);
@@ -161,11 +183,8 @@ app.factory('AuthenticationFactory', function ($rootScope, $localStorage, $http,
     }
 
     function Logout() {
-        backend.post('logout', undefined, undefined, "Sie wurdern erfolgreich abgemeldet");
-        delete $localStorage.currentUser;
+        delete $localStorage.currentJWT;
         $http.defaults.headers.common.Authorization = '';
-        $rootScope.isAdmin = false;
-        $rootScope.firstLogin = false;
         $rootScope.loggedIn = false;
     }
 });

@@ -1,0 +1,23 @@
+<div class="container-fluid " ng-controller="categoriesCtrl">
+    <div class="row ">
+        <h1>Your categories</h1>
+        <button ng-click="addCategory(addTitel)">add</button>
+        <input type="text" class="btn" ng-model="addTitel" />
+        <div class="table-responsive">
+            <table class="table table-condensed">
+                <tr ng-repeat="category in categories">
+                    <td>
+                        <input type="text" class="btn" style="color:black;background-color:{{category.color}};" ng-model="category.color" />
+                    </td>
+                    <td>{{category.name}}</td>
+                    <td>{{category.desc}}</td>
+                    <td>
+                        <button class="btn btn-default" ng-click="update(category.name)">✓</button>
+                        <button class="btn btn-default" ng-click="refresh">↶</button>
+                        <button class="btn btn-default" ng-click="deleteUser(category.name)">🗑</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

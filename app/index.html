@@ -14,23 +14,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="node_modules/bootstrap.min.css">
   <link rel="stylesheet" href="app.css">
-  <link rel="stylesheet" href="simple-sidebar.css">
+  <link rel="stylesheet" href="sidebar/simple-sidebar.css">
+  <link rel="stylesheet" href="node_modules/angularjs-color-picker/dist/themes/angularjs-color-picker-bootstrap.min.css" />
+  <link href="node_modules/md-color-picker/dist/mdColorPicker.min.css" rel="stylesheet" />
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body ng-app="myApp">
-  <div id="wrapper" class="toggled">
+  <div id="wrapper" class="toggled" ng-controller="sidebarCtrl">
 
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav  ">
         <li class="sidebar-brand">
-          <a ui-sref="login">{{user}}User login</a>
+          <a ng-show="!loggedIn" ui-sref="login">Login</a>
+          <div ng-show="loggedIn" ng-click="logout()">Logout</div>
         </li>
         <li>
-          <a  ui-sref="about">List</a>
+          <a ui-sref="list">List</a>
+        </li>
+        <li>
+          <a ui-sref="categories">Categories</a>
         </li>
         <li>
           <a ui-sref="hello">Graph</a>
@@ -45,6 +51,10 @@
         <button type="button " class="btn btn-side-in">income</button>
         <button type="button " class="btn btn-side-out">expense</button>
 
+        <div class="input-group date">
+          <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+          <input type="date" class="form-control" name="date" id="date" />
+        </div>
 
 
       </div>
@@ -52,7 +62,7 @@
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
-    <div id=" page-content-wrapper ">
+    <div id="page-content-wrapper">
       <ui-view></ui-view>
     </div>
     <!-- /#page-content-wrapper -->
@@ -64,22 +74,35 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js "></script>
   -->
- 
+
   <script src="bower_components/angular/angular.js "></script>
+  <script src="node_modules/ui-bootstrap-tpls.js"></script>
   <script src="bower_components/angular-route/angular-route.js "></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.min.js"></script>
+
+
+
+  <script src="node_modules/tinycolor2/dist/tinycolor-min.js"></script>
+  <script src="node_modules/angularjs-color-picker/dist/angularjs-color-picker.min.js"></script>
+  <script src="node_modules/md-color-picker/dist/mdColorPicker.min.js"></script>
+
   <script src="app.js "></script>
+  <script src="services.js"></script>
   <script src="view1/view1.js "></script>
   <script src="view2/view2.js "></script>
-   <script src="ngStorage.min.js"></script>
+  <script src="sidebar/sidebar.js "></script>
+  <script src="categories/categories.js "></script>
+  <script src="ngStorage.min.js"></script>
   <script src="components/version/version.js "></script>
   <script src="components/version/version-directive.js "></script>
   <script src="components/version/interpolate-filter.js "></script>
-    <script src="angular-ui-router.min.js"></script>
-      <script src="login/login.js"></script>
-        <script src="services.js"></script>
-       
-       
-         
+  <script src="node_modules/angular-ui-router.min.js "></script>
+  <script src="login/login.js"></script>
+
+
+
+
+
 </body>
 
 </html>

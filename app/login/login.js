@@ -1,39 +1,31 @@
-app.controller('loginCtrl', ['$scope', '$localStorage', '$location', 'AuthenticationFactory', '$rootScope', function ($scope, $localStorage, $location, AuthenticationFactory, $rootScope) {
+app.controller('loginCtrl', ['$scope', '$localStorage', '$state', 'AuthenticationFactory', '$rootScope', function ($scope, $localStorage, $state, AuthenticationFactory, $rootScope) {
     $scope.islogging = false;
     $scope.login = function () {
         $scope.islogging = true;
-        console.log( $scope.username);
-        console.log($scope.password);
-        AuthenticationFactory.Login($scope.username, $scope.password, function (response) {
-            if (response.status >= 200 &&response.status<300) {
-                successful(response);
+        AuthenticationFactory.Login($scope.loginUsername, $scope.loginPassword, function (response) {
+            $scope.islogging = false;
+            if (response.status >= 200 && response.status < 300) {
+                $state.go("hello");
             } else {
-                failed(response);
+                console.log('login failed');
+                $scope.islogging = false;
+                //   $rootScope.alert = response.data.info;
+                console.log($rootScope.alert);
             }
         });
-
-
     };
-
-    function successful(response) {
-        console.log('login succesful')
-        if ($localStorage.currentUser.isAdmin) {
-            $location.path("/admin/carrier-management");
-        } else {
-            if ($localStorage.currentUser.firstLogin) {
-                $location.path("/survey");
+    $scope.register = function () {
+        $scope.islogging = true;
+        AuthenticationFactory.Register($scope.email, $scope.username, $scope.password, function (response) {
+            $scope.islogging = false;
+            if (response.status >= 200 && response.status < 300) {
+                $state.go("hello");
             } else {
-                $location.path("/user/profil");
+                console.log('login failed');
+                $scope.islogging = false;
+                //   $rootScope.alert = response.data.info;
+                console.log($rootScope.alert);
             }
-        }
-        $scope.islogging = false;
-     //   $rootScope.alert = '';
-        console.log( $scope.islogging);
-    }
-    function failed(response) {
-        console.log('login failed');
-        $scope.islogging = false;
-     //   $rootScope.alert = response.data.info;
-        console.log($rootScope.alert);
-    }
+        });
+    };
 }]);

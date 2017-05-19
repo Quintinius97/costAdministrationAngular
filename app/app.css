@@ -1,48 +1,67 @@
-
-.sidebar-bottom{
-
+.sidebar-bottom {
   bottom: 0;
   position: absolute;
   border-top: #383A3C solid 2px;
   width: 100%;
   height: 250px;
-  margin:auto;
-  padding:auto;
+  margin: auto;
+  padding: auto;
 }
-.btn-side-in{
-  background-color: #53A63A;
-  width:45%;
-  margin-left:5%;
-  margin-top: 5%;
-  border-radius: 0;
-  float:left;
-}
-.btn-side-out{
-  background-color: #BD3331;
-  width:45%;
-  margin-right:5%;
-  margin-top: 5%;
-  border-radius: 0;
-  float:right;
-}
-.btn-group{
-  background-color: orange;
-  width:100%;
-}
-body{
-  background-color: #383A3C;
-  color:#C8BBBB;
-}
-.side-input{
-background-color: rgba(0,0,0,0);
 
-border: none;
-border-bottom: #FFED00 solid 1px;
-margin:5%;
-width: 90%;
-color:#C8BBBB;
+.btn-side-in {
+  background-color: #53A63A;
+  width: 45%;
+  margin-left: 5%;
+  margin-top: 5%;
+  border-radius: 0;
+  float: left;
 }
-textarea:focus, input:focus, button:focus, .btn:focus{
-    outline: none;
-    box-shadow: none;
+
+.btn-side-out {
+  background-color: #BD3331;
+  width: 45%;
+  margin-right: 5%;
+  margin-top: 5%;
+  border-radius: 0;
+  float: right;
+}
+
+.btn-group {
+  background-color: orange;
+  width: 100%;
+}
+
+body {
+  background-color: #383A3C;
+  color: #C8BBBB;
+}
+
+.side-input {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  border-bottom: #FFED00 solid 1px;
+  margin: 5%;
+  width: 90%;
+  color: #C8BBBB;
+}
+
+textarea:focus, input:focus, button:focus, .btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.registerForm {
+  padding: 15px;
+}
+
+.loginForm {
+  padding: 15px;
+}
+
+.date {
+  margin: 5%;
+}
+
+#page-content-wrapper {
+  padding: 10px;
 }

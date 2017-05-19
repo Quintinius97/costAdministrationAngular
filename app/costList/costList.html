@@ -1,0 +1,30 @@
+<div class="container-fluid " ng-controller="categoriesCtrl">
+    <div class="row ">
+        <h1>Your entries</h1>
+        <form>
+            <input type="text" placeholder="Title" ng-model="title" />
+            <input type="text" placeholder="Description" ng-model="desc" />
+            <input type="text" placeholder="Category" ng-model="category" />
+            <input type="date" placeholder="Date" ng-model="date" />
+            <input type="number" placeholder="Price" ng-model="price" />
+            <input type="text" placeholder="Currency" value="EUR" ng-model="currency" />
+
+        </form>
+        <div class="table-responsive">
+            <table class="table table-condensed">
+                <tr ng-repeat="cost in costs">
+                    <td tooltip={{cost.desc}}>
+                        {{cost.title}}
+                    </td>
+                    <td>{{cost.category}}</td>
+                    <td>{{cost.price}}</td>
+                    <td>
+                        <button class="btn btn-default" ng-click="update(category.name)">✓</button>
+                        <button class="btn btn-default" ng-click="refresh">↶</button>
+                        <button class="btn btn-default" ng-click="deleteUser(category.name)">🗑</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
