@@ -26,6 +26,7 @@ app.config(function ($stateProvider) {
     .state({
       name: 'list',
       url: '/list',
-      templateUrl: 'costList/costList.html'
+      templateUrl: 'costList/costList.html',
+      controller: 'costListCtrl'
     })
 });
