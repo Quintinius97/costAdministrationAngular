@@ -4,6 +4,7 @@
 ### Angular ###
 ## Angular ##
 # compiled output
+/
 /dist
 /tmp
 /app/**/*.js
@@ -12,6 +13,7 @@
 # dependencies
 /node_modules
 /bower_components
+/src/dependencies
 
 # IDEs and editors
 /.idea
