@@ -1,34 +1,60 @@
-//jshint strict: false
-module.exports = function(config) {
-  config.set({
-
-    basePath: './app',
+module.exports = function (karma) {
+  karma.set({
+    basePath: '.',
 
     files: [
-      'bower_components/angular/angular.js',
-      'bower_components/angular-route/angular-route.js',
-      'bower_components/angular-mocks/angular-mocks.js',
-      'components/**/*.js',
-      'view*/**/*.js'
-    ],
+      'node_modules/angular/angular.js',
+      'node_modules/angular-animate/angular-animate.js',
+      'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
+      'node_modules/angular-ui-router/release/angular-ui-router.js',
+      'node_modules/angular-mocks/angular-mocks.js',
 
-    autoWatch: true,
+      'src/**/*.js',
+      'build/src/app/config.js',
+      'build/src/app/templates-app.js',
+    ],
 
     frameworks: ['jasmine'],
 
-    browsers: ['Chrome'],
-
     plugins: [
+      'karma-jasmine',
       'karma-chrome-launcher',
       'karma-firefox-launcher',
-      'karma-jasmine',
-      'karma-junit-reporter'
+      'karma-ie-launcher',
+      'karma-coverage',
+      'karma-spec-reporter',
     ],
 
-    junitReporter: {
-      outputFile: 'test_out/unit.xml',
-      suite: 'unit'
-    }
+    preprocessors: {
+      'src/**/!(*.spec).js': ['coverage'],
+    },
 
+    reporters: [
+      'coverage',
+      'spec',
+    ],
+
+    coverageReporter: {
+      type: 'html',
+      dir: 'test-results/coverage/',
+    },
+
+    specReporter: {
+      maxLogLines: 5,
+    },
+
+    port: 9018,
+    runnerPort: 9100,
+    urlRoot: '/',
+
+    autoWatch: false,
+
+    browserNoActivityTimeout: 50000,
+    browserDisconnectTimeout: 8000,
+
+    browsers: [
+      'Chrome',
+      'IE',
+    ],
   });
 };

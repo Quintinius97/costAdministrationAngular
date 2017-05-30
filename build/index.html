@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="ngWebEngineering" ng-controller="AppController">
+<head>
+    <title>Web Engineering</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="stylesheet" href="assets/bundle.css">
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/config.js"></script>
+    <script src="app/services.js"></script>
+    <script src="app/categories/categories.js"></script>
+    <script src="app/costList/costList.js"></script>
+    <script src="app/login/login.js"></script>
+    <script src="app/sidebar/sidebar.js"></script>
+    <script src="app/view1/view1.js"></script>
+    <script src="app/view2/view2.js"></script>
+    <script src="app/view2/view2_test.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="home">Sample</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ui-sref-active="active"><a ui-sref="today">Today</a></li>
+            <li ui-sref-active="active"><a ui-sref="week">Weekly View</a></li>
+            <li ui-sref-active="active"><a ui-sref="month">Monthly View</a></li>
+            <li ui-sref-active="active"><a ui-sref="add-entry">Add Entry</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div ui-view></div>
+</body>
+</html>

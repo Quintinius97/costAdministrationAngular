@@ -1,0 +1,25 @@
+{
+  "extends":"google",
+
+  "plugins":[
+    "import"
+  ],
+
+  "globals": {
+    "angular": 1
+  },
+
+  "rules":{
+    "linebreak-style":["warn",
+      "windows"
+    ],
+    "func-names":"off",
+    "vars-on-top": "off",
+    "max-len": "off",
+    "no-unused-vars":"off",
+    "quotes": "off",
+    "indent": "off",
+    "no-undef": "off",
+    "spaced-comment": "off"
+  }
+}

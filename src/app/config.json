@@ -1,0 +1,4 @@
+{
+  'DEBUG_LOG_ENABLED': true,
+  'REST_WEB_SERVICES_END_POINT': ''
+}
