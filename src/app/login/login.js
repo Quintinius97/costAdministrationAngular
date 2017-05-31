@@ -5,7 +5,7 @@ app.controller('loginCtrl', ['$scope', '$localStorage', '$state', 'Authenticatio
         AuthenticationFactory.Login($scope.loginUsername, $scope.loginPassword, function (response) {
             $scope.islogging = false;
             if (response.status >= 200 && response.status < 300) {
-                $state.go("hello");
+                $state.go("list");
             } else {
                 console.log('login failed');
                 $scope.islogging = false;
@@ -19,7 +19,7 @@ app.controller('loginCtrl', ['$scope', '$localStorage', '$state', 'Authenticatio
         AuthenticationFactory.Register($scope.email, $scope.username, $scope.password, function (response) {
             $scope.islogging = false;
             if (response.status >= 200 && response.status < 300) {
-                $state.go("hello");
+                $state.go("list");
             } else {
                 console.log('login failed');
                 $scope.islogging = false;

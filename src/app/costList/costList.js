@@ -7,6 +7,18 @@ app.controller('costListCtrl', ['$scope', 'backend', function ($scope, backend) 
             }
         });
     }
+    $scope.addCostModal = function () {
+        modalInstance = $uibModal.open({
+            animation: true,
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            templateUrl: 'app/addCostModal/addCostModal.html',
+            size: 'lg',
+            controller: 'costListCtrl',
+
+
+        })
+    };
     $scope.refresh();
     $scope.addCost = function () {
         var payload = {};
