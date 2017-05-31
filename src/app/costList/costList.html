@@ -9,11 +9,10 @@
                         {{cost.title}}
                     </td>
                     <td>{{cost.category}}</td>
-                    <td>{{cost.price}}</td>
+                    <td>{{cost.price}} {{cost.currency}}</td>
+                    <td>{{cost.date*1000|date:"dd.MM.y HH:mm" }}</td>
                     <td>
-                        <button class="btn btn-default" ng-click="update(category.name)">✓</button>
-                        <button class="btn btn-default" ng-click="refresh">↶</button>
-                        <button class="btn btn-default" ng-click="deleteUser(category.name)">🗑</button>
+                        <button class="btn btn-default" ng-click="delete(cost.id)">🗑</button>
                     </td>
                 </tr>
             </table>

@@ -1,4 +1,4 @@
-app.controller('costModalCtrl', ['$scope', 'backend', function ($scope, backend) {
+app.controller('costModalCtrl', ['$scope', 'backend', '$uibModalInstance', function ($scope, backend, $uibModalInstance) {
     $scope.addCost = function () {
         var payload = {};
         payload.title = $scope.title;
@@ -8,12 +8,13 @@ app.controller('costModalCtrl', ['$scope', 'backend', function ($scope, backend)
         payload.currency = $scope.currency;
         payload.date = new Date($scope.date).getTime() / 1000;
         backend.post('cost', payload, function (response) {
-            if (response.satus == 200) {
+            if (response.status == 200) {
                 console.log('success');
             }
             else {
                 console.log('fail');
             }
+            $uibModalInstance.close();
         })
     }
 }]);

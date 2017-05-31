@@ -12,13 +12,21 @@ app.controller('costListCtrl', ['$scope', 'backend', '$uibModal', function ($sco
             animation: true,
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
-            templateUrl: 'app/addCostModal/addCostModal.html',
+            templateUrl: 'app/costList/addCostModal.html',
             size: 'lg',
-            controller: 'costListCtrl',
-
-
-        })
+            controller: 'costModalCtrl'
+        }).closed.then(function () {
+            $scope.refresh();
+        });
     };
     $scope.refresh();
+
+    $scope.delete = function (id) {
+        backend.delete('cost/' + id, function (response) {
+            if (response.status == 200) {
+                $scope.refresh();
+            }
+        });
+    }
 
 }]);

@@ -1,17 +1,18 @@
 <div class="modal-header">
-  <h3 class="modal-title" id="modal-title">Add Category</h3>
+    <h3 class="modal-title" id="modal-title">Add Category</h3>
 </div>
 <div class="modal-body profil" id="modal-body">
-  <div class="row">
-    <div class="col-md-5">
-      <form class="form-inline">
-        <input class="form-control" type="text" placeholder="Title" ng-model="title" />
-        <input class="form-control" type="text" placeholder="Description" ng-model="desc" />
-        <input class="form-control" type="number" placeholder="Color" ng-model="category.color" />
-      </form>
+    <div class="row">
+        <div class="col-md-5">
+            <form class="form-inline">
+                <input class="form-control" type="text" placeholder="Title" ng-model="title" />
+                <input class="form-control" type="text" placeholder="Description" ng-model="description" />
+                <input class="form-control" type="text" placeholder="Color" style="color:black;background-color:{{color}};" ng-model="color"
+                />
+            </form>
+        </div>
     </div>
-  </div>
-  <div class="modal-footer">
-    <button class="btn btn-default" type="button" ng-click="addCategory()">Save</button>
-  </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="addCategory()">Save</button>
+    </div>
 </div>
