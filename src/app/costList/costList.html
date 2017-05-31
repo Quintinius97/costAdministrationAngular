@@ -1,15 +1,7 @@
 <div class="container-fluid ">
     <div class="row ">
         <h1>Your entries</h1>
-        <form>
-            <input type="text" placeholder="Title" ng-model="title" />
-            <input type="text" placeholder="Description" ng-model="desc" />
-            <input type="number" placeholder="Category" ng-model="category" />
-            <input type="date" placeholder="Date" ng-model="date" />
-            <input type="number" placeholder="Price" ng-model="price" />
-            <input type="text" placeholder="Currency" value="EUR" ng-model="currency" />
-            <button ng-click="addCost();">Add</button>
-        </form>
+
         <div class="table-responsive">
             <table class="table table-condensed">
                 <tr ng-repeat="cost in costs">

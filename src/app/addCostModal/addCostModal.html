@@ -4,9 +4,17 @@
 <div class="modal-body profil" id="modal-body">
     <div class="row">
         <div class="col-md-5">
+            <form>
+                <input type="text" placeholder="Title" ng-model="title" />
+                <input type="text" placeholder="Description" ng-model="desc" />
+                <input type="number" placeholder="Category" ng-model="category" />
+                <input type="date" placeholder="Date" ng-model="date" />
+                <input type="number" placeholder="Price" ng-model="price" />
+                <input type="text" placeholder="Currency" value="EUR" ng-model="currency" />
+            </form>
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-default" type="button" ng-click="savd()">Save</button>
+        <button class="btn btn-default" type="button" ng-click="addCost()">Save</button>
     </div>
 </div>
