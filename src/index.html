@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html lang="en" ng-app="myApp" class="no-js">
 <!--<![endif]-->
@@ -20,80 +23,76 @@
 </head>
 
 <body ng-app="myApp">
-  <div id="wrapper" class="toggled" ng-controller="sidebarCtrl">
+<div id="wrapper" class="toggled" ng-controller="sidebarCtrl">
 
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-      <ul class="sidebar-nav  ">
-        <li class="sidebar-brand">
-          <a ng-show="!loggedIn" ui-sref="login">Login</a>
-          <div ng-show="loggedIn" ng-click="logout()">Logout</div>
-        </li>
-        <li>
-          <a ui-sref="list">List</a>
-        </li>
-        <li>
-          <a ui-sref="categories">Categories</a>
-        </li>
-        <li>
-          <a ui-sref="hello">Graph</a>
-        </li>
-        <li>
-          <a ui-sref="login">Time</a>
-        </li>
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav  ">
+      <li class="sidebar-brand">
+        <a ng-show="!loggedIn" ui-sref="login">Login</a>
+        <div ng-show="loggedIn" ng-click="logout()">Logout</div>
+      </li>
+      <li>
+        <a ui-sref="list">List</a>
+      </li>
+      <li>
+        <a ui-sref="categories">Categories</a>
+      </li>
+      <li>
+        <a ui-sref="hello">Graph</a>
+      </li>
+      <li>
+        <a ui-sref="login">Time</a>
+      </li>
 
-      </ul>
-      <div class="sidebar-bottom">
-        <input type="text" placeholder="Enter something" id="title" class="side-input" />
-        <button type="button " class="btn btn-side-in">income</button>
-        <button type="button " class="btn btn-side-out">expense</button>
+    </ul>
+    <div class="sidebar-bottom">
+      <input type="text" placeholder="Enter something" id="title" class="side-input"/>
+      <button type="button " class="btn btn-side-in">income</button>
+      <button type="button " class="btn btn-side-out">expense</button>
 
-        <div class="input-group date">
-          <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-          <input type="date" class="form-control" name="date" id="date" />
-        </div>
-
-
+      <div class="input-group date">
+        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+        <input type="date" class="form-control" name="date" id="date"/>
       </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
 
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-      <ui-view></ui-view>
-    </div>
-    <!-- /#page-content-wrapper -->
 
+    </div>
   </div>
-  <!-- /#wrapper -->
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <ui-view></ui-view>
+  </div>
+  <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
 
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js "></script>
-  -->
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js "></script>
+-->
 
-  <script src="dependencies/js/angular.min.js "></script>
-  <script src="dependencies/ui-bootstrap-tpls.js"></script>
-  <script src="dependencies/angular-route.js "></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.min.js"></script>
-
-
-
-  <!--<script src="node_modules/tinycolor2/dist/tinycolor-min.js"></script>
-  <script src="node_modules/angularjs-color-picker/dist/angularjs-color-picker.min.js"></script>
-  <script src="node_modules/md-color-picker/dist/mdColorPicker.min.js"></script>-->
-
-  <script src="app/app.js "></script>
-  <script src="app/services.js"></script>
-  <script src="app/view1/view1.js "></script>
-  <script src="app/view2/view2.js "></script>
-  <script src="app/sidebar/sidebar.js "></script>
-  <script src="app/categories/categories.js "></script>
-  <script src="app/costList/costList.js "></script>
-  <script src="app/login/login.js"></script>
+<script src="dependencies/js/angular.min.js "></script>
+<script src="dependencies/js/ui-bootstrap-tpls.js"></script>
+<script src="dependencies/js/angular-ui-router.min.js "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.min.js"></script>
 
 
+<!--<script src="node_modules/tinycolor2/dist/tinycolor-min.js"></script>
+<script src="node_modules/angularjs-color-picker/dist/angularjs-color-picker.min.js"></script>
+<script src="node_modules/md-color-picker/dist/mdColorPicker.min.js"></script>-->
 
+<script src="app/app.js "></script>
+<script src="app/services.js"></script>
+<script src="app/view1/view1.js "></script>
+<script src="app/view2/view2.js "></script>
+<script src="app/sidebar/sidebar.js "></script>
+<script src="app/categories/categories.js "></script>
+<script src="app/costList/costList.js "></script>
+<script src="app/login/login.js"></script>
 
 
 </body>
