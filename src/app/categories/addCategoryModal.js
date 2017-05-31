@@ -1,7 +1,7 @@
 app.controller('categoryModalCtrl', ['$scope', 'backend', function ($scope, backend) {
-  $scope.addCategory = function (titel, color, description) {
+  $scope.addCategory = function (title, color, description) {
     var payload = {};
-    payload.name = titel;
+    payload.name = title;
     payload.desc = description;
     if (color) {
       payload.color = color;
