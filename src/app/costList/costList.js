@@ -1,4 +1,4 @@
-app.controller('costListCtrl', ['$scope', 'backend', function ($scope, backend) {
+app.controller('costListCtrl', ['$scope', 'backend', '$uibModal', function ($scope, backend, $uibModal) {
     $scope.refresh = function () {
         backend.get('cost/all', function (response) {
             if (response.status == 200) {
