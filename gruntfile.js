@@ -49,6 +49,7 @@ module.exports = function(grunt) {
           {src: "node_modules/angular/angular.min.js", dest: "src/dependencies/js/angular.min.js"},
           {src: "node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js", dest: "src/dependencies/js/ui-bootstrap-tpls.js"},
           {src: "node_modules/angular-ui-router/release/angular-ui-router.min.js", dest: "src/dependencies/js/angular-ui-router.min.js"},
+          {src: "node_modules/angular-route/angular-route.min.js", dest: "src/dependencies/js/angular-route.min.js"},
           {src: "node_modules/ngstorage/ngStorage.min.js", dest: "src/dependencies/js/ngStorage.min.js"},
           {src: "node_modules/tinycolor/tinycolor.js", dest: "src/dependencies/js/tinycolor.js"}
         ]
