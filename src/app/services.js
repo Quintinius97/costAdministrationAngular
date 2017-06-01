@@ -13,20 +13,24 @@ app.service('backend', function ($http, $uibModal, $rootScope, Notification, $lo
   }
 
   function error(response) {
-    console.log("error");
-    console.log(response.status);
+
     if (response.status == 401) {
       $location.path("login");
+      $rootScope.loggedIn = false;
+      Notification.error("You have to be logged in");
+
     }
-    $rootScope.alert = response.data.error;
-    var modalInstanceAdd = $uibModal.open({
-      animation: true,
-      ariaLabelledBy: 'modal-title',
-      ariaDescribedBy: 'modal-body',
-      templateUrl: 'app/errorModal/error.html',
-      controller: 'errorCtrl',
-      size: 'md'
-    });
+    else {
+      $rootScope.alert = response.data.error;
+      var modalInstanceAdd = $uibModal.open({
+        animation: true,
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'app/errorModal/error.html',
+        controller: 'errorCtrl',
+        size: 'md'
+      });
+    }
   }
 
   this.post = function (route, payload, callback, successMessage, customErrorHandling) {

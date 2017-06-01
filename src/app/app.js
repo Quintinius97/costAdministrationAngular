@@ -9,8 +9,8 @@ var app = angular.module('myApp', ['ngRoute', 'ui.router', 'ngStorage', 'ui.boot
     $routeProvider.otherwise({ redirectTo: '/view1' });
   }]);
 app.run(function ($http, $rootScope, $localStorage) {
-  $rootScope.loggedIn = true;
-  $http.defaults.headers.common.Authorization = $localStorage.currentJWT;
+  $rootScope.loggedIn = false;
+  //$http.defaults.headers.common.Authorization = $localStorage.currentJWT;
 });
 app.config(function ($stateProvider, NotificationProvider) {
   $stateProvider
