@@ -19,6 +19,6 @@ app.controller('categoryModalCtrl', ['$scope', 'backend', '$uibModalInstance', f
         console.log('fail');
       }
       $uibModalInstance.close();
-    });
+    }, "Succesful added category");
   };
 }]);

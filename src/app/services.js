@@ -1,5 +1,5 @@
-//app.service('backend', function ($http, $uibModal, $rootScope, Notification, $location) {
-app.service('backend', function ($http, $rootScope, $location) {
+app.service('backend', function ($http, $uibModal, $rootScope, Notification, $location) {
+
   var baseURL = "http://localhost:4000/";
   console.log(baseURL);
 
@@ -18,15 +18,15 @@ app.service('backend', function ($http, $rootScope, $location) {
     if (response.status == 401) {
       $location.path("login");
     }
-    $rootScope.alert = response.data.info;
-    // var modalInstanceAdd = $uibModal.open({
-    //     animation: true,
-    //     ariaLabelledBy: 'modal-title',
-    //     ariaDescribedBy: 'modal-body',
-    //     templateUrl: 'errormodal.html',
-    //     controller: 'modalerrorCtrl',
-    //     size: 'md'
-    // });
+    $rootScope.alert = response.data.error;
+    var modalInstanceAdd = $uibModal.open({
+      animation: true,
+      ariaLabelledBy: 'modal-title',
+      ariaDescribedBy: 'modal-body',
+      templateUrl: 'app/errorModal/error.html',
+      controller: 'errorCtrl',
+      size: 'md'
+    });
   }
 
   this.post = function (route, payload, callback, successMessage, customErrorHandling) {

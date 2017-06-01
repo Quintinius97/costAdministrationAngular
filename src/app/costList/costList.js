@@ -1,4 +1,4 @@
-app.controller('costListCtrl', ['$scope', 'backend', '$uibModal', function ($scope, backend, $uibModal) {
+app.controller('costListCtrl', ['$scope', 'backend', '$uibModal', '$rootScope', function ($scope, backend, $uibModal, $rootScope) {
     $scope.refresh = function () {
         backend.get('cost/all', function (response) {
             if (response.status == 200) {
@@ -26,7 +26,7 @@ app.controller('costListCtrl', ['$scope', 'backend', '$uibModal', function ($sco
             if (response.status == 200) {
                 $scope.refresh();
             }
-        });
+        }, "Succesfully deleted entry");
     }
 
 }]);

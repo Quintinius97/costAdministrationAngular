@@ -27,7 +27,7 @@ app.controller('categoriesCtrl', ['$scope', 'backend', '$uibModal', function ($s
       if (response.status == 200) {
         $scope.refresh();
       }
-    });
+    }, "Succesfully deleted category");
   }
 
 }]);

@@ -15,6 +15,6 @@ app.controller('costModalCtrl', ['$scope', 'backend', '$uibModalInstance', funct
                 console.log('fail');
             }
             $uibModalInstance.close();
-        })
+        }, "Successful added entry")
     }
 }]);
