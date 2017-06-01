@@ -6,7 +6,7 @@ app.controller('categoriesCtrl', ['$scope', 'backend', '$uibModal', function ($s
         $scope.categories = response.data;
       }
     });
-  }
+  };
   $scope.refresh();
 
   $scope.openCategoryModal = function () {

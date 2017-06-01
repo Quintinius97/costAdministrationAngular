@@ -42,3 +42,14 @@ app.config(function ($stateProvider, NotificationProvider) {
     maxCount: 3
   });
 });
+app.filter('getCategoryName', function () {
+  return function (input, id) {
+    var i = 0, len = input.length;
+    for (; i < len; i++) {
+      if (+input[i].id == +id) {
+        return input[i].name;
+      }
+    }
+    return null;
+  }
+});

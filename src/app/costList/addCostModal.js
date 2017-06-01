@@ -3,7 +3,7 @@ app.controller('costModalCtrl', ['$scope', 'backend', '$uibModalInstance', funct
         var payload = {};
         payload.title = $scope.title;
         payload.desc = $scope.desc;
-        payload.category = $scope.category;
+        payload.category = parseInt($scope.category);
         payload.price = $scope.price;
         payload.currency = $scope.currency;
         payload.date = new Date($scope.date).getTime() / 1000;

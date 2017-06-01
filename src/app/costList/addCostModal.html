@@ -7,7 +7,10 @@
             <form class="form-inline">
                 <input class="form-control" type="text" placeholder="Title" ng-model="title" />
                 <input class="form-control" type="text" placeholder="Description" ng-model="desc" />
-                <input class="form-control" type="number" placeholder="Category" ng-model="category" />
+
+                <select ng-model="category">
+                    <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
+                </select>
                 <input class="form-control" type="date" placeholder="Date" ng-model="date" />
                 <input class="form-control" type="number" placeholder="Price" ng-model="price" />
                 <input class="form-control" type="text" placeholder="Currency" value="EUR" ng-model="currency" />

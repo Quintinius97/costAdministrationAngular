@@ -2,11 +2,18 @@ app.controller('costListCtrl', ['$scope', 'backend', '$uibModal', '$rootScope', 
     $scope.refresh = function () {
         backend.get('cost/all', function (response) {
             if (response.status == 200) {
-                console.log(response.data);
                 $scope.costs = response.data;
             }
         });
+        $scope.loadCategories();
     }
+    $scope.loadCategories = function () {
+        backend.get('category/all', function (response) {
+            if (response.status == 200) {
+                $rootScope.categories = response.data;
+            }
+        });
+    };
     $scope.addCostModal = function () {
         modalInstance = $uibModal.open({
             animation: true,
