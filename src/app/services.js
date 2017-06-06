@@ -1,28 +1,24 @@
-app.service('backend', function ($http, $uibModal, $rootScope, Notification, $location) {
-
+app.service('backend', function($http, $uibModal, $rootScope, Notification, $location) {
   var baseURL = "http://localhost:4000/";
   console.log(baseURL);
 
   function success(successMessage) {
     console.log("success");
     console.log(typeof successMessage);
-    if (typeof successMessage == 'string') {
+    if(typeof successMessage == 'string') {
       console.log(typeof successMessage);
       Notification.success(successMessage);
     }
   }
 
   function error(response) {
-
-    if (response.status == 401) {
+    if(response.status == 401) {
       $location.path("login");
       $rootScope.loggedIn = false;
       Notification.error("You have to be logged in");
-
-    }
-    else {
+    } else {
       $rootScope.alert = response.data.error;
-      var modalInstanceAdd = $uibModal.open({
+      $uibModal.open({
         animation: true,
         ariaLabelledBy: 'modal-title',
         ariaDescribedBy: 'modal-body',
@@ -33,9 +29,9 @@ app.service('backend', function ($http, $uibModal, $rootScope, Notification, $lo
     }
   }
 
-  this.post = function (route, payload, callback, successMessage, customErrorHandling) {
-    if (typeof callback === 'undefined') {
-      callback = function (response) {
+  this.post = function(route, payload, callback, successMessage, customErrorHandling) {
+    if(typeof callback === 'undefined') {
+      callback = function(response) {
         console.log(response);
       };
     }
@@ -52,16 +48,16 @@ app.service('backend', function ($http, $uibModal, $rootScope, Notification, $lo
       callback(response);
       return response;
     }, function errorCallback(response) {
-      if (!customErrorHandling) {
+      if(!customErrorHandling) {
         error(response);
       }
       callback(response);
       return response;
     });
   };
-  this.get = function (route, callback, successMessage, customErrorHandling) {
-    if (typeof callback === 'undefined') {
-      callback = function (response) {
+  this.get = function(route, callback, successMessage, customErrorHandling) {
+    if(typeof callback === 'undefined') {
+      callback = function(response) {
         console.log(response);
       };
     }
@@ -80,16 +76,16 @@ app.service('backend', function ($http, $uibModal, $rootScope, Notification, $lo
       callback(response);
       return response;
     }, function errorCallback(response) {
-      if (!customErrorHandling) {
+      if(!customErrorHandling) {
         error(response);
       }
       callback(response);
       return false;
     });
   };
-  this.put = function (route, callback, successMessage, customErrorHandling) {
-    if (typeof callback === 'undefined') {
-      callback = function (response) {
+  this.put = function(route, callback, successMessage, customErrorHandling) {
+    if(typeof callback === 'undefined') {
+      callback = function(response) {
         console.log(response);
       };
     }
@@ -102,16 +98,16 @@ app.service('backend', function ($http, $uibModal, $rootScope, Notification, $lo
       callback(response);
       return response;
     }, function errorCallback(response) {
-      if (!customErrorHandling) {
+      if(!customErrorHandling) {
         error(response);
       }
       callback(response);
       return false;
     });
   };
-  this.delete = function (route, callback, successMessage, customErrorHandling) {
-    if (typeof callback === 'undefined') {
-      callback = function (response) {
+  this.delete = function(route, callback, successMessage, customErrorHandling) {
+    if(typeof callback === 'undefined') {
+      callback = function(response) {
         console.log(response);
       };
     }
@@ -124,7 +120,7 @@ app.service('backend', function ($http, $uibModal, $rootScope, Notification, $lo
       callback(response);
       return response;
     }, function errorCallback(response) {
-      if (!customErrorHandling) {
+      if(!customErrorHandling) {
         error(response);
       }
       callback(response);
@@ -132,7 +128,7 @@ app.service('backend', function ($http, $uibModal, $rootScope, Notification, $lo
     });
   };
 });
-app.factory('AuthenticationFactory', function ($rootScope, $localStorage, $http, backend) {
+app.factory('AuthenticationFactory', function($rootScope, $localStorage, $http, backend) {
   var service = {};
   service.Login = Login;
   service.Logout = Logout;
@@ -145,10 +141,10 @@ app.factory('AuthenticationFactory', function ($rootScope, $localStorage, $http,
       "password": password
     };
 
-    backend.post('user/login', payload, function (response) {
-      if (response.status >= 200 && response.status < 300) {
+    backend.post('user/login', payload, function(response) {
+      if(response.status >= 200 && response.status < 300) {
         console.log("Logged in success");
-        if (response.data.jwt) {
+        if(response.data.jwt) {
           $rootScope.username = username;
           $rootScope.loggedIn = true;
           $localStorage.currentJWT = response.data.jwt;
@@ -170,10 +166,10 @@ app.factory('AuthenticationFactory', function ($rootScope, $localStorage, $http,
       "password": password
     };
 
-    backend.post('user/register', payload, function (response) {
-      if (response.status >= 200 && response.status < 300) {
+    backend.post('user/register', payload, function(response) {
+      if(response.status >= 200 && response.status < 300) {
         console.log("Registered in success");
-        if (response.data.jwt) {
+        if(response.data.jwt) {
           $rootScope.loggedIn = true;
           $rootScope.username = username;
           $localStorage.currentJWT = response.data.jwt;

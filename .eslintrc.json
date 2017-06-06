@@ -16,10 +16,13 @@
     "func-names":"off",
     "vars-on-top": "off",
     "max-len": "off",
-    "no-unused-vars":"off",
     "quotes": "off",
     "indent": "off",
     "no-undef": "off",
-    "spaced-comment": "off"
+    "spaced-comment": "off",
+    "no-var": "off",
+    "comma-dangle": "off",
+    "new-cap": "off",
+    "require-jsdoc": "off"
   }
 }
