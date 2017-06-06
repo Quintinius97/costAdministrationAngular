@@ -181,6 +181,13 @@ module.exports = function (grunt) {
           dest: 'dist/assets/media'                  // Destination path prefix
         }]
       }
+    },
+    eslint: {
+      options: {
+        configFile: '.eslintrc.json'
+
+      },
+      target: ['src/app/']
     }
 
   });
@@ -193,7 +200,10 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-eslint');
 
   grunt.registerTask('default', ['browserSync', 'copy', 'watch']);
-  grunt.registerTask('dist', ['htmlmin', 'cssmin', 'processhtml', 'imagemin', 'uglify', 'copy:dist']);
+  grunt.registerTask('dist', ['eslint', 'htmlmin', 'cssmin', 'processhtml', 'imagemin', 'uglify', 'copy:dist']);
+
+
 };

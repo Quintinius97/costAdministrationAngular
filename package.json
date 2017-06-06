@@ -28,12 +28,14 @@
     "grunt-contrib-uglify": "^2.1.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-copy": "^0.1.0",
+    "grunt-eslint": "^19.0.0",
     "grunt-processhtml": "^0.4.1",
     "grunt-sass": "^2.0.0",
     "load-grunt-tasks": "^3.5.2"
   },
   "scripts": {
     "start": "grunt",
-    "build": "grunt dist"
+    "build": "grunt dist",
+    "lint": "eslint src/app"
   }
 }
