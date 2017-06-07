@@ -2,15 +2,14 @@
     <div class="row ">
         <h1>Your categories</h1>
         <button class="btn" ng-click="openCategoryModal()">Add</button>
-        <input type="text" class="btn" ng-model="addTitel" />
         <div class="table-responsive">
             <table class="table table-condensed">
                 <tr ng-repeat="category in categories">
 
-                    <td style="color:{{category.color}};">{{category.name}}</td>
-                    <td style="color:{{category.color}};">{{category.desc}}</td>
+                    <td ng-style="{color:category.color}">{{category.name}}</td>
+                    <td ng-style="{color:category.color}">{{category.desc}}</td>
                     <td>
-                        <button ng-if="category.isStd!=1" class="btn btn-default" ng-click="delete(category.id)">🗑</button>
+                        <button ng-if="category.isStd!=1" class="btn btn-default" ng-click="delete(category.id)"><i class="fa fa-times" aria-hidden="true"></i></button>
                     </td>
                 </tr>
             </table>
