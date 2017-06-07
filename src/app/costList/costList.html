@@ -11,7 +11,7 @@
                     <td>{{categories|getCategoryName: cost.category }}
                     </td>
                     <td>{{cost.price}} {{cost.currency}}</td>
-                    <td>{{cost.date*1000|date:"dd.MM.y HH:mm" }}</td>
+                    <td>{{cost.date*1000|date:"dd.MM.y HH:mm": '+0300' }}</td>
                     <td>
                         <button class="btn btn-default" ng-click="delete(cost.id)">🗑</button>
                     </td>
