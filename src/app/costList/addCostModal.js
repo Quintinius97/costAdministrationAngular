@@ -1,5 +1,7 @@
 app.controller('costModalCtrl',
   ['$scope', 'backend', '$uibModalInstance', function ($scope, backend, $uibModalInstance) {
+    $scope.currencies = ['$', '€', '£']
+    $scope.currency = $scope.currencies[0];
     $scope.addCost = function () {
       var payload = {};
       payload.title = $scope.title;

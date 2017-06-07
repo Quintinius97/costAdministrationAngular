@@ -9,12 +9,16 @@
                 <input class="form-control" type="text" placeholder="Description" ng-model="desc" />
 
                 <select ng-model="category">
+                    <option value="" disabled>Please select</option>
                     <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
                 </select>
                 <input class="form-control" type="date" placeholder="Date" ng-model="date" />
                 <input class="form-control" type="time" placeholder="Time" ng-model="time" />
                 <input class="form-control" type="number" placeholder="Price" ng-model="price" />
-                <input class="form-control" type="text" placeholder="Currency" value="EUR" ng-model="currency" />
+
+                <select ng-model="currency">
+                    <option ng-repeat="currency in currencies" >{{currency}}</option>
+                </select>
             </form>
         </div>
     </div>
