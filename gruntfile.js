@@ -93,6 +93,7 @@ module.exports = function (grunt) {
               src: "node_modules/angular-ui-notification/dist/angular-ui-notification.min.js",
               dest: "src/dependencies/js/angular-ui-notification.min.js"
             }
+            
           ]
         }
       },

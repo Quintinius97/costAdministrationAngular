@@ -2,26 +2,61 @@
     <h3 class="modal-title" id="modal-title">Add Costs</h3>
 </div>
 <div class="modal-body profil" id="modal-body">
-    <div class="row">
-        <div class="col-md-5">
-            <form class="form-inline">
-                <input class="form-control" type="text" placeholder="Title" ng-model="title" />
-                <input class="form-control" type="text" placeholder="Description" ng-model="desc" />
 
-                <select ng-model="category">
-                    <option value="" disabled>Please select</option>
-                    <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
-                </select>
-                <input class="form-control" type="date" placeholder="Date" ng-model="date" />
-                <input class="form-control" type="time" placeholder="Time" ng-model="time" />
-                <input class="form-control" type="number" placeholder="Price" ng-model="price" />
 
-                <select ng-model="currency">
-                    <option ng-repeat="currency in currencies" >{{currency}}</option>
-                </select>
-            </form>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="title">Title:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="title" placeholder="Enter titel of entry" ng-model="title">
+            </div>
         </div>
-    </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="desc">Description:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="desc" placeholder="Enter description of entry" ng-model="desc">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="category">Category:</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="category" ng-model="category">
+                            <option value="" disabled>Please select</option>
+                            <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
+                        </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2 col-xs-12" for="price">Value:</label>
+            <div class="col-xs-7 col-sm-6">
+
+                <input class="form-control" type="number" placeholder="Price" id="price" ng-model="price" />
+            </div>
+            <div class="col-xs-5 col-sm-4">
+                <select class="form-control" ng-model="currency">
+                            <option ng-repeat="currency in currencies" >{{currency}}</option>
+                        </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2 col-xs-12" for="date">Date:</label>
+            <div class="col-xs-7 col-sm-6">
+
+                <input class="form-control" type="date" placeholder="Date" id="date" ng-model="date" />
+            </div>
+            <div class="col-xs-5 col-sm-4">
+                <input class="form-control" type="time" placeholder="Time" ng-model="time" />
+            </div>
+        </div>
+
+
+
+
+
+
+    </form>
+
     <div class="modal-footer">
         <button class="btn btn-default" type="button" ng-click="addCost()">Save</button>
     </div>

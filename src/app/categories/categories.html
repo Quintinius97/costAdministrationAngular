@@ -1,19 +1,22 @@
-<div class="container-fluid " ng-controller="categoriesCtrl">
+<div class="container-fluid ">
     <div class="row ">
-
         <h1>Your categories</h1>
         <button class="btn" ng-click="openCategoryModal()">Add a new category</button>
 
         <table class="table top-buffer">
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th></th>
+                <th></th>
+            </tr>
             <tr ng-repeat="category in categories">
-
                 <td ng-style="{color:category.color}">{{category.name}}</td>
                 <td ng-style="{color:category.color}">{{category.desc}}</td>
-
                 <td class="clickable" ng-click="openCategoryModal(category.id)">
                     <i ng-if="category.isStd!=1" class="fa fa-pencil" aria-hidden="true"></i>
                 </td>
-                <td class="clickable" ng-click="delete(category.id)">
+                <td class="clickable text-center" ng-click="delete(category.id)">
                     <i ng-if="category.isStd!=1" class="fa fa-times" aria-hidden="true"></i>
                 </td>
             </tr>

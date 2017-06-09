@@ -1,5 +1,5 @@
-app.controller('costListCtrl', ['$scope', 'backend', '$uibModal', '$rootScope',
-  function ($scope, backend, $uibModal, $rootScope) {
+app.controller('costListCtrl', ['$scope', 'backend', '$uibModal', '$rootScope', '$filter',
+  function ($scope, backend, $uibModal, $rootScope, $filter) {
     $scope.refresh = function () {
       backend.get('cost/all', function (response) {
         if (response.status == 200) {
@@ -15,7 +15,7 @@ app.controller('costListCtrl', ['$scope', 'backend', '$uibModal', '$rootScope',
         }
       });
     };
-    $scope.addCostModal = function () {
+    $scope.openCostModal = function () {
       modalInstance = $uibModal.open({
         animation: true,
         ariaLabelledBy: 'modal-title',

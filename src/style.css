@@ -49,8 +49,7 @@ body {
   margin-top: 20px; }
 
 .clickable {
-  cursor: pointer;
-  text-align: center; }
+  cursor: pointer; }
 
 textarea:focus, input:focus, button:focus, .btn:focus {
   outline: none;

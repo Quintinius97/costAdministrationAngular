@@ -6,7 +6,7 @@ var app = angular.module('myApp',
   .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
-    $routeProvider.otherwise({ redirectTo: '/view1' });
+
   }]);
 app.run(function ($http, $rootScope, $localStorage) {
   $rootScope.loggedIn = true;
@@ -17,11 +17,13 @@ app.config(function ($stateProvider, NotificationProvider) {
     .state({
       name: 'login',
       url: '/login',
+      controller: 'loginCtrl',
       templateUrl: 'app/login/login.html'
     })
     .state({
       name: 'categories',
       url: '/cateories',
+      controller: 'categoriesCtrl',
       templateUrl: 'app/categories/categories.html'
     })
     .state({
@@ -42,16 +44,4 @@ app.config(function ($stateProvider, NotificationProvider) {
     maxCount: 3
   });
 });
-app.filter('getCategoryName', function () {
-  return function (input, id) {
-    var i = 0;
-    var len = input.length;
 
-    for (; i < len; i++) {
-      if (+input[i].id === +id) {
-        return input[i].name;
-      }
-    }
-    return null;
-  };
-});

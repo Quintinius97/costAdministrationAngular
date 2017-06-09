@@ -3,10 +3,8 @@ app.service('backend', function($http, $uibModal, $rootScope, Notification, $loc
   console.log(baseURL);
 
   function success(successMessage) {
-    console.log("success");
-    console.log(typeof successMessage);
-    if(typeof successMessage == 'string') {
-      console.log(typeof successMessage);
+    console.log("success");    
+    if(typeof successMessage == 'string') {      
       Notification.success(successMessage);
     }
   }
