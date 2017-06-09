@@ -1,16 +1,22 @@
-app.service('backend', function($http, $uibModal, $rootScope, Notification, $location) {
+app.service("backend", function(
+  $http,
+  $uibModal,
+  $rootScope,
+  Notification,
+  $location
+) {
   var baseURL = "http://localhost:4000/";
   console.log(baseURL);
 
   function success(successMessage) {
-    console.log("success");    
-    if(typeof successMessage == 'string') {      
+    console.log("success");
+    if (typeof successMessage == "string") {
       Notification.success(successMessage);
     }
   }
 
   function error(response) {
-    if(response.status == 401) {
+    if (response.status == 401) {
       $location.path("login");
       $rootScope.loggedIn = false;
       Notification.error("You have to be logged in");
@@ -18,115 +24,138 @@ app.service('backend', function($http, $uibModal, $rootScope, Notification, $loc
       $rootScope.alert = response.data.error;
       $uibModal.open({
         animation: true,
-        ariaLabelledBy: 'modal-title',
-        ariaDescribedBy: 'modal-body',
-        templateUrl: 'app/errorModal/error.html',
-        controller: 'errorCtrl',
-        size: 'md'
+        ariaLabelledBy: "modal-title",
+        ariaDescribedBy: "modal-body",
+        templateUrl: "app/errorModal/error.html",
+        controller: "errorCtrl",
+        size: "md"
       });
     }
   }
 
-  this.post = function(route, payload, callback, successMessage, customErrorHandling) {
-    if(typeof callback === 'undefined') {
+  this.post = function(
+    route,
+    payload,
+    callback,
+    successMessage,
+    customErrorHandling
+  ) {
+    if (typeof callback === "undefined") {
       callback = function(response) {
         console.log(response);
       };
     }
     $http({
-      method: 'POST',
+      method: "POST",
       url: baseURL + route,
       data: payload,
       headers: {
         "Content-Type": "application/json"
       },
       timeout: 10000
-    }).then(function successCallback(response) {
-      success(successMessage);
-      callback(response);
-      return response;
-    }, function errorCallback(response) {
-      if(!customErrorHandling) {
-        error(response);
+    }).then(
+      function successCallback(response) {
+        success(successMessage);
+        callback(response);
+        return response;
+      },
+      function errorCallback(response) {
+        if (!customErrorHandling) {
+          error(response);
+        }
+        callback(response);
+        return response;
       }
-      callback(response);
-      return response;
-    });
+    );
   };
   this.get = function(route, callback, successMessage, customErrorHandling) {
-    if(typeof callback === 'undefined') {
+    if (typeof callback === "undefined") {
       callback = function(response) {
         console.log(response);
       };
     }
 
     $http({
-      method: 'GET',
+      method: "GET",
       url: baseURL + route,
       headers: {
-        'If-Modified-Since': 'Mon, 26 Jul 1997 05:00:00 GMT',
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache'
+        "If-Modified-Since": "Mon, 26 Jul 1997 05:00:00 GMT",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache"
       },
       timeout: 5000
-    }).then(function successCallback(response) {
-      success(successMessage);
-      callback(response);
-      return response;
-    }, function errorCallback(response) {
-      if(!customErrorHandling) {
-        error(response);
+    }).then(
+      function successCallback(response) {
+        success(successMessage);
+        callback(response);
+        return response;
+      },
+      function errorCallback(response) {
+        if (!customErrorHandling) {
+          error(response);
+        }
+        callback(response);
+        return false;
       }
-      callback(response);
-      return false;
-    });
+    );
   };
   this.put = function(route, callback, successMessage, customErrorHandling) {
-    if(typeof callback === 'undefined') {
+    if (typeof callback === "undefined") {
       callback = function(response) {
         console.log(response);
       };
     }
     $http({
-      method: 'PUT',
+      method: "PUT",
       url: baseURL + route,
       timeout: 5000
-    }).then(function successCallback(response) {
-      success(successMessage);
-      callback(response);
-      return response;
-    }, function errorCallback(response) {
-      if(!customErrorHandling) {
-        error(response);
+    }).then(
+      function successCallback(response) {
+        success(successMessage);
+        callback(response);
+        return response;
+      },
+      function errorCallback(response) {
+        if (!customErrorHandling) {
+          error(response);
+        }
+        callback(response);
+        return false;
       }
-      callback(response);
-      return false;
-    });
+    );
   };
   this.delete = function(route, callback, successMessage, customErrorHandling) {
-    if(typeof callback === 'undefined') {
+    if (typeof callback === "undefined") {
       callback = function(response) {
         console.log(response);
       };
     }
     $http({
-      method: 'DELETE',
+      method: "DELETE",
       url: baseURL + route,
       timeout: 5000
-    }).then(function successCallback(response) {
-      success(successMessage);
-      callback(response);
-      return response;
-    }, function errorCallback(response) {
-      if(!customErrorHandling) {
-        error(response);
+    }).then(
+      function successCallback(response) {
+        success(successMessage);
+        callback(response);
+        return response;
+      },
+      function errorCallback(response) {
+        if (!customErrorHandling) {
+          error(response);
+        }
+        callback(response);
+        return false;
       }
-      callback(response);
-      return false;
-    });
+    );
   };
 });
-app.factory('AuthenticationFactory', function($rootScope, $localStorage, $http, backend) {
+app.factory("AuthenticationFactory", function(
+  $rootScope,
+  $localStorage,
+  $http,
+  backend
+) {
   var service = {};
   service.Login = Login;
   service.Logout = Logout;
@@ -135,14 +164,14 @@ app.factory('AuthenticationFactory', function($rootScope, $localStorage, $http, 
 
   function Login(username, password, callback) {
     var payload = {
-      "username": username,
-      "password": password
+      username: username,
+      password: password
     };
 
-    backend.post('user/login', payload, function(response) {
-      if(response.status >= 200 && response.status < 300) {
+    backend.post("user/login", payload, function(response) {
+      if (response.status >= 200 && response.status < 300) {
         console.log("Logged in success");
-        if(response.data.jwt) {
+        if (response.data.jwt) {
           $rootScope.username = username;
           $rootScope.loggedIn = true;
           $localStorage.currentJWT = response.data.jwt;
@@ -159,15 +188,15 @@ app.factory('AuthenticationFactory', function($rootScope, $localStorage, $http, 
 
   function Register(name, username, password, callback) {
     var payload = {
-      "username": username,
-      "name": name,
-      "password": password
+      username: username,
+      name: name,
+      password: password
     };
 
-    backend.post('user/register', payload, function(response) {
-      if(response.status >= 200 && response.status < 300) {
+    backend.post("user/register", payload, function(response) {
+      if (response.status >= 200 && response.status < 300) {
         console.log("Registered in success");
-        if(response.data.jwt) {
+        if (response.data.jwt) {
           $rootScope.loggedIn = true;
           $rootScope.username = username;
           $localStorage.currentJWT = response.data.jwt;
@@ -184,7 +213,7 @@ app.factory('AuthenticationFactory', function($rootScope, $localStorage, $http, 
 
   function Logout() {
     delete $localStorage.currentJWT;
-    $http.defaults.headers.common.Authorization = '';
+    $http.defaults.headers.common.Authorization = "";
     $rootScope.loggedIn = false;
   }
 });

@@ -1,5 +1,5 @@
-app.filter('getCategoryName', function () {
-  return function (input, id) {
+app.filter("getCategoryName", function() {
+  return function(input, id) {
     var i = 0;
     if (!input) {
       return null;
@@ -14,8 +14,8 @@ app.filter('getCategoryName', function () {
     return null;
   };
 });
-app.filter('getCategoryColor', function () {
-  return function (input, id) {
+app.filter("getCategoryColor", function() {
+  return function(input, id) {
     var i = 0;
     if (!input) {
       return null;
