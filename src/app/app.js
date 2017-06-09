@@ -8,9 +8,20 @@ var app = angular.module('myApp',
 
 
   }]);
-app.run(function ($http, $rootScope, $localStorage) {
-  $rootScope.loggedIn = true;
+app.run(function ($http, $rootScope, $localStorage, backend, $state) {
   $http.defaults.headers.common.Authorization = $localStorage.currentJWT;
+  backend.get("verify", function (response) {
+    if (response.status == 200) {
+      $rootScope.loggedIn = true;
+      $state.go("list");
+    }
+    else {
+      $http.defaults.headers.common.Authorization = "";
+      $rootScope.loggedIn = false;
+      $state.go("login");
+    }
+  }, "Logged in succesfully", true);
+
 });
 app.config(function ($stateProvider, NotificationProvider) {
   $stateProvider
