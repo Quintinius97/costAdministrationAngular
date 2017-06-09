@@ -67,6 +67,37 @@ button {
 #page-content-wrapper {
   padding: 10px; }
 
+@media (min-width: 768px) {
+  .mobile-navbar {
+    display: none; } }
+
+@media (max-width: 768px) {
+  .mobile-navbar {
+    display: block; }
+  .mobile-menu {
+    display: none; }
+  .extended {
+    display: block;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    list-style: none;
+    background-color: #252525;
+    line-height: 30px;
+    font-size: 20px;
+    z-index: 2000; }
+    .extended ul {
+      padding: 0; }
+    .extended li {
+      list-style: none !important;
+      border-top: 1px solid white;
+      line-height: 30px;
+      font-size: 20px;
+      padding: 10px; } }
+
+.mobile-navbar {
+  background-color: #191919; }
+
 .modal .modal-content {
   background-color: #383A3C; }
 
@@ -86,12 +117,36 @@ body {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease; }
 
-#wrapper.toggled {
-  padding-left: 250px; }
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #191919; }
+
+@media (min-width: 768px) {
+  #wrapper.toggled {
+    padding-left: 250px; }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 250px; }
+  #wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px; }
+  #wrapper.toggled {
+    padding-left: 250px; }
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0; }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 250px; } }
 
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
+  top: 0;
   left: 250px;
   width: 0;
   height: 100%;
@@ -103,17 +158,10 @@ body {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease; }
 
-#wrapper.toggled #sidebar-wrapper {
-  width: 250px; }
-
 #page-content-wrapper {
   width: 100%;
   position: absolute;
   padding: 15px; }
-
-#wrapper.toggled #page-content-wrapper {
-  position: absolute;
-  margin-right: -250px; }
 
 /* Sidebar Styles */
 .sidebar-nav {
@@ -155,20 +203,14 @@ body {
   color: #fff;
   background: none; }
 
-@media (min-width: 768px) {
-  #wrapper {
-    padding-left: 0; }
-  #wrapper.toggled {
-    padding-left: 250px; }
-  #sidebar-wrapper {
-    width: 0; }
-  #wrapper.toggled #sidebar-wrapper {
-    width: 250px; }
-  #page-content-wrapper {
-    padding: 20px;
-    position: relative; }
-  #wrapper.toggled #page-content-wrapper {
-    position: relative;
-    margin-right: 0; } }
+#wrapper {
+  padding-left: 0; }
+
+#sidebar-wrapper {
+  width: 0; }
+
+#page-content-wrapper {
+  padding: 20px;
+  position: relative; }
 
 /*# sourceMappingURL=style.css.map */

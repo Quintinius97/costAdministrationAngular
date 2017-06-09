@@ -13,7 +13,7 @@ app.controller('costListCtrl', ['$scope', 'backend', '$uibModal', '$rootScope', 
         if (response.status == 200) {
           $rootScope.categories = response.data;
         }
-      });
+      }, null, true);
     };
     $scope.openCostModal = function () {
       modalInstance = $uibModal.open({

@@ -30,8 +30,31 @@
 </head>
 
 <body ng-app="myApp">
-  <div id="wrapper" class="toggled" ng-controller="sidebarCtrl">
+  <div id="wrapper" class="toggled" ng-controller="sidebarCtrl" ng-init="extended=false">
+    <div class="mobile-navbar navbar">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Cost Administration</a>
+          <i ng-click="extended=!extended" class="fa fa-bars pull-right navbar-brand" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div ng-class="{extended:extended}" class="mobile-menu">
+        <ul>
+          <li>
+            <a ng-show="!loggedIn" ui-sref="login" ng-click="extended=false">Login</a>
+            <a ng-show="loggedIn" ui-sref="login" ng-click="extended=false;logout()">Logout</a>
+          </li>
+          <li>
+            <a ui-sref="list" ng-click="extended=false">List</a>
+          </li>
+          <li>
+            <a ui-sref="categories" ng-click="extended=false">Categories</a>
+          </li>
 
+
+        </ul>
+      </div>
+    </div>
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav  ">
@@ -45,12 +68,7 @@
         <li>
           <a ui-sref="categories">Categories</a>
         </li>
-        <!--<li>
-          <a ui-sref="hello">Graph</a>
-        </li>
-        <li>
-          <a ui-sref="login">Time</a>
-        </li>-->
+
 
       </ul>
       <!--<div class="sidebar-bottom">
