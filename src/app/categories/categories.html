@@ -1,18 +1,23 @@
 <div class="container-fluid " ng-controller="categoriesCtrl">
     <div class="row ">
-        <h1>Your categories</h1>
-        <button class="btn" ng-click="openCategoryModal()">Add</button>
-        <div class="table-responsive">
-            <table class="table table-condensed">
-                <tr ng-repeat="category in categories">
 
-                    <td ng-style="{color:category.color}">{{category.name}}</td>
-                    <td ng-style="{color:category.color}">{{category.desc}}</td>
-                    <td>
-                        <button ng-if="category.isStd!=1" class="btn btn-default" ng-click="delete(category.id)"><i class="fa fa-times" aria-hidden="true"></i></button>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <h1>Your categories</h1>
+        <button class="btn" ng-click="openCategoryModal()">Add a new category</button>
+
+        <table class="table top-buffer">
+            <tr ng-repeat="category in categories">
+
+                <td ng-style="{color:category.color}">{{category.name}}</td>
+                <td ng-style="{color:category.color}">{{category.desc}}</td>
+
+                <td class="clickable" ng-click="openCategoryModal(category.id)">
+                    <i ng-if="category.isStd!=1" class="fa fa-pencil" aria-hidden="true"></i>
+                </td>
+                <td class="clickable" ng-click="delete(category.id)">
+                    <i ng-if="category.isStd!=1" class="fa fa-times" aria-hidden="true"></i>
+                </td>
+            </tr>
+        </table>
+
     </div>
 </div>

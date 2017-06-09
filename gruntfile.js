@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
-  
+
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -22,7 +22,7 @@ module.exports = function (grunt) {
     },
     browserSync: {
       bsFiles: {
-        src: ['src/app/**', 'src/assets/style/css/*.*', 'src/index.html']
+        src: ['src/app/**', 'src/assets/style/css/*.*', 'src/index.html', 'src/style.css']
       },
       options: {
         watchTask: true,
@@ -87,7 +87,7 @@ module.exports = function (grunt) {
               src: "node_modules/ngstorage/ngStorage.min.js",
               dest: "src/dependencies/js/ngStorage.min.js"
             },
-            {src: "node_modules/tinycolor/tinycolor.js", dest: "src/dependencies/js/tinycolor.js"},
+            { src: "node_modules/tinycolor/tinycolor.js", dest: "src/dependencies/js/tinycolor.js" },
 
             {
               src: "node_modules/angular-ui-notification/dist/angular-ui-notification.min.js",
@@ -96,14 +96,14 @@ module.exports = function (grunt) {
           ]
         }
       },
-      dist:{
+      dist: {
 
-           files: [{
-             expand: true,
-             cwd: 'src/dependencies/fonts/',
-             src: ['**'],
-             dest: 'dist/assets/style/fonts'
-          }]
+        files: [{
+          expand: true,
+          cwd: 'src/dependencies/fonts/',
+          src: ['**'],
+          dest: 'dist/assets/style/fonts'
+        }]
 
       }
     },
@@ -143,13 +143,13 @@ module.exports = function (grunt) {
           {
             'dist/app/script.js': ['src/app/**/*.js'],
             'dist/assets/js/script.js': ['src/dependencies/js/*.js'],
-            'dist/dependencies/js/angular.min.js' : 'src/dependencies/js/angular.min.js',
-            'dist/dependencies/js/ui-bootstrap-tpls.js' : 'src/dependencies/js/ui-bootstrap-tpls.js',
-            'dist/dependencies/js/angular-ui-router.min.js' : 'src/dependencies/js/angular-ui-router.min.js',
-            'dist/dependencies/js/angular-route.min.js' : 'src/dependencies/js/angular-route.min.js',
-            'dist/dependencies/js/ngStorage.min.js' : 'src/dependencies/js/ngStorage.min.js',
-            'dist/dependencies/js/tinycolor.js' : 'src/dependencies/js/tinycolor.js',
-            'dist/dependencies/js/angular-ui-notification.min.js' : 'src/dependencies/js/angular-ui-notification.min.js'
+            'dist/dependencies/js/angular.min.js': 'src/dependencies/js/angular.min.js',
+            'dist/dependencies/js/ui-bootstrap-tpls.js': 'src/dependencies/js/ui-bootstrap-tpls.js',
+            'dist/dependencies/js/angular-ui-router.min.js': 'src/dependencies/js/angular-ui-router.min.js',
+            'dist/dependencies/js/angular-route.min.js': 'src/dependencies/js/angular-route.min.js',
+            'dist/dependencies/js/ngStorage.min.js': 'src/dependencies/js/ngStorage.min.js',
+            'dist/dependencies/js/tinycolor.js': 'src/dependencies/js/tinycolor.js',
+            'dist/dependencies/js/angular-ui-notification.min.js': 'src/dependencies/js/angular-ui-notification.min.js'
           },
           {
             expand: true,

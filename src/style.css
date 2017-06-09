@@ -35,7 +35,7 @@
 
 body {
   background-color: #383A3C;
-  color: #C8BBBB; }
+  color: #DDD !important; }
 
 .side-input {
   background-color: transparent;
@@ -45,9 +45,19 @@ body {
   width: 90%;
   color: #C8BBBB; }
 
+.top-buffer {
+  margin-top: 20px; }
+
+.clickable {
+  cursor: pointer;
+  text-align: center; }
+
 textarea:focus, input:focus, button:focus, .btn:focus {
   outline: none;
   box-shadow: none; }
+
+button {
+  color: black !important; }
 
 .registerForm {
   padding: 15px; }
@@ -55,11 +65,11 @@ textarea:focus, input:focus, button:focus, .btn:focus {
 .loginForm {
   padding: 15px; }
 
-.date {
-  margin: 5%; }
-
 #page-content-wrapper {
   padding: 10px; }
+
+.modal .modal-content {
+  background-color: #383A3C; }
 
 /*!
  * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)
