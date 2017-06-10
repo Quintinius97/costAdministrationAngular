@@ -5,7 +5,7 @@ app.controller("loginCtrl", [
   "AuthenticationFactory",
   "$rootScope",
   function($scope, $localStorage, $state, AuthenticationFactory, $rootScope) {
-    $scope.islogging = false;
+    $scope.islogging = false; //can be used for loading bars
     $scope.login = function() {
       $scope.islogging = true;
       AuthenticationFactory.Login(
@@ -16,10 +16,7 @@ app.controller("loginCtrl", [
           if (response.status >= 200 && response.status < 300) {
             $state.go("list");
           } else {
-            console.log("login failed");
             $scope.islogging = false;
-            //   $rootScope.alert = response.data.info;
-            console.log($rootScope.alert);
           }
         }
       );
@@ -35,10 +32,7 @@ app.controller("loginCtrl", [
           if (response.status >= 200 && response.status < 300) {
             $state.go("list");
           } else {
-            console.log("login failed");
             $scope.islogging = false;
-            //   $rootScope.alert = response.data.info;
-            console.log($rootScope.alert);
           }
         }
       );

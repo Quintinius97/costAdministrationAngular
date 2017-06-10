@@ -2,7 +2,6 @@
     <div class="row ">
         <h1>Your categories</h1>
         <button class="btn" ng-click="openCategoryModal()">Add a new category</button>
-
         <table class="table top-buffer">
             <tr>
                 <th>Title</th>
@@ -13,18 +12,20 @@
             <tr ng-repeat="category in categories">
                 <td ng-style="{color:category.color}">{{category.name}}</td>
                 <td ng-style="{color:category.color}">{{category.desc}}</td>
+
+                <!--standard categories cant be edited or deleted (isStd)-->
                 <td ng-if="category.isStd!=1" class="clickable text-center" ng-click="openCategoryModal(category.id)">
                     <i ng-if="category.isStd!=1" class="fa fa-pencil" aria-hidden="true"></i>
                 </td>
                 <td ng-if="category.isStd!=1" class="clickable text-center" ng-click="delete(category.id)">
                     <i ng-if="category.isStd!=1" class="fa fa-times" aria-hidden="true"></i>
                 </td>
+
                 <td ng-if="category.isStd==1">
                 </td>
                 <td ng-if="category.isStd==1">
                 </td>
             </tr>
         </table>
-
     </div>
 </div>

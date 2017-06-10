@@ -2,14 +2,12 @@
     <div class="row ">
         <h1>Your entries</h1>
         <button class="btn" ng-click="openCostModal()">Add a new expense or income</button>
-
         <table class="table top-buffer">
             <tr>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Date</th>
                 <th>Category</th>
-
                 <th class="text-right">Value</th>
                 <th></th>
                 <th></th>
@@ -18,8 +16,12 @@
                 <td>{{cost.title}} </td>
                 <td>{{cost.desc}} </td>
                 <td>{{cost.date*1000|date:"dd.MM.y HH:mm": 'UTC' }}</td>
+
+                <!--because cost only holds category ID the name and color are selected by a custom Filter-->
                 <td ng-style="{'color':(categories|getCategoryColor:cost.category)}">{{categories|getCategoryName: cost.category }} </td>
+                <!--colored cost (red if < 0 else green-->
                 <td class="text-right" ng-class="cost.price<0?'red':'green'">{{cost.price|number:2}} {{cost.currency}}</td>
+
                 <td class="clickable text-center" ng-click="openCostModal(cost.id)">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </td>
@@ -28,6 +30,5 @@
                 </td>
             </tr>
         </table>
-
     </div>
 </div>

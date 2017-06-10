@@ -3,6 +3,7 @@ app.controller("categoriesCtrl", [
   "backend",
   "$uibModal",
   function($scope, backend, $uibModal) {
+    //refresh category List for user
     $scope.refresh = function() {
       backend.get("category/all", function(response) {
         if (response.status == 200) {
@@ -11,8 +12,10 @@ app.controller("categoriesCtrl", [
         }
       });
     };
-    $scope.refresh();
+    $scope.refresh(); //refresh on load
 
+    //opens the category modal to add(no id) or update a category
+    // and refresh after the modal is closed
     $scope.openCategoryModal = function(id) {
       modalInstance = $uibModal
         .open({
@@ -23,6 +26,7 @@ app.controller("categoriesCtrl", [
           size: "lg",
           controller: "categoryModalCtrl",
           resolve: {
+            //make the id of the category available in modal
             getID: function() {
               return id;
             }
@@ -30,7 +34,7 @@ app.controller("categoriesCtrl", [
         })
         .result.then(
           function() {
-            $scope.refresh();
+            $scope.refresh(); //if closed by button (save)
           },
           function() {
             //catch backdrop click
@@ -38,6 +42,7 @@ app.controller("categoriesCtrl", [
         );
     };
 
+    //function to delete given category
     $scope.delete = function(id) {
       backend.delete(
         "category/" + id,

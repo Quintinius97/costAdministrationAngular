@@ -4,21 +4,23 @@ app.controller("costModalCtrl", [
   "$uibModalInstance",
   "getID",
   function($scope, backend, $uibModalInstance, getID) {
-    $scope.currencies = ["$", "€", "£"];
-    $scope.currency = $scope.currencies[0];
-    var id = "";
+    $scope.currencies = ["$", "€", "£"]; //available currencies
+    $scope.currency = $scope.currencies[0]; //default value for currency
+
+    var id = ""; //holds either "" or id (prevent undefined)
     if (getID) {
       id = getID;
-      $scope.method = "Update";
+      $scope.method = "Update"; //displayed in modal header
+
+      //if update (id exists) read all existing values for the cost
       backend.get("cost/" + getID, function(response) {
         if (response.status == 200) {
-          console.log(response.data);
           $scope.title = response.data.title;
           $scope.desc = response.data.desc;
-          $scope.category = String(response.data.category);
+          $scope.category = String(response.data.category); //gets number but select is string
           $scope.price = response.data.price;
           $scope.currency = response.data.currency;
-          var dateTime = new Date(response.data.date * 1000);
+          var dateTime = new Date(response.data.date * 1000); //because of unix time, the date and time have to be split, but angular expects Date objects
           $scope.time = new Date(
             1970,
             0,
@@ -41,6 +43,7 @@ app.controller("costModalCtrl", [
       $scope.method = "Add";
     }
 
+    //update or add cost
     $scope.addCost = function() {
       var payload = {};
       payload.title = $scope.title;
@@ -50,21 +53,25 @@ app.controller("costModalCtrl", [
       payload.currency = $scope.currency;
       var date = new Date($scope.date).getTime() / 1000;
       var time = new Date($scope.time).getTime() / 1000;
-      var offset = new Date().getTimezoneOffset();
-      payload.date = date + time - offset * 60 + 60 * 60; //angular bug needs correction of 1 hour
+      var offset = new Date().getTimezoneOffset() * 60; //in seconds
+      payload.date = date + time - offset + 60 * 60; //angular bug needs correction of 1 hour (60m*60s)
+
+      //"cost/" and "cost/<id>" are handled differently in backend but for angular its the same
       backend.post(
         "cost/" + id,
         payload,
         function(response) {
           if (response.status == 200) {
-            console.log("success");
-          } else {
-            console.log("fail");
+            $uibModalInstance.close(); //only close autoimaticly if succesful
           }
-          $uibModalInstance.close();
         },
         "Successful added entry"
       );
+    };
+
+    //function to close modal by button
+    $scope.close = function() {
+      $uibModalInstance.close();
     };
   }
 ]);

@@ -4,14 +4,21 @@ app.controller("categoryModalCtrl", [
   "$uibModalInstance",
   "getID",
   function($scope, backend, $uibModalInstance, getID) {
+    //init with random Color
+    $scope.color = randomColor({
+      luminosity: "light",
+      hue: "random"
+    });
+
     //check if new category or updated
-    var id = "";
+    var id = ""; //holds either "" or id (prevent undefined)
     if (getID) {
       id = getID;
-      $scope.method = "Update";
-      backend.get("category/" + getID, function(response) {
+      $scope.method = "Update"; //displayed in modal header
+
+      //if update (id exists) read all existing values for the category
+      backend.get("category/" + id, function(response) {
         if (response.status == 200) {
-          console.log(response.data);
           $scope.color = response.data.color;
           $scope.desc = response.data.desc;
           $scope.name = response.data.name;
@@ -20,13 +27,8 @@ app.controller("categoryModalCtrl", [
     } else {
       $scope.method = "Add";
     }
-    $scope.color = randomColor({
-      luminosity: "light",
-      hue: "random"
-    }); //init with random Color
-    $scope.close = function() {
-      $uibModalInstance.close();
-    };
+
+    //adds or updates the category
     $scope.addCategory = function() {
       var payload = {};
       var payload = {};
@@ -39,11 +41,16 @@ app.controller("categoryModalCtrl", [
         payload,
         function(response) {
           if (response.status == 200) {
-            $uibModalInstance.close();
+            $uibModalInstance.close(); //close on success
           }
         },
-        "Succesful edited category"
+        "Succesfully edited category"
       );
+    };
+
+    //function to close without saving
+    $scope.close = function() {
+      $uibModalInstance.close();
     };
   }
 ]);
