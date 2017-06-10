@@ -19,7 +19,7 @@ app.controller("categoriesCtrl", [
           animation: true,
           ariaLabelledBy: "modal-title",
           ariaDescribedBy: "modal-body",
-          templateUrl: "app/categories/addCategoryModal.html",
+          templateUrl: "app/categories/categoryModal.html",
           size: "lg",
           controller: "categoryModalCtrl",
           resolve: {

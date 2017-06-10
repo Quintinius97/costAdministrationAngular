@@ -4,23 +4,26 @@ app.controller("categoryModalCtrl", [
   "$uibModalInstance",
   "getID",
   function($scope, backend, $uibModalInstance, getID) {
+    //check if new category or updated
+    var id = "";
     if (getID) {
-      //check if new category or updated
-      console.log("success");
+      id = getID;
+      $scope.method = "Update";
       backend.get("category/" + getID, function(response) {
         if (response.status == 200) {
           console.log(response.data);
           $scope.color = response.data.color;
           $scope.desc = response.data.desc;
           $scope.name = response.data.name;
-        } else {
-          console.log("fail");
         }
       });
     } else {
-      console.log("test");
+      $scope.method = "Add";
     }
-    $scope.color = randomColor(); //init with random Color
+    $scope.color = randomColor({
+      luminosity: "light",
+      hue: "random"
+    }); //init with random Color
     $scope.close = function() {
       $uibModalInstance.close();
     };
@@ -32,17 +35,14 @@ app.controller("categoryModalCtrl", [
       payload.color = $scope.color;
 
       backend.post(
-        "category",
+        "category/" + id,
         payload,
         function(response) {
           if (response.status == 200) {
-            console.log("success");
-          } else {
-            console.log("fail");
+            $uibModalInstance.close();
           }
-          $uibModalInstance.close();
         },
-        "Succesful added category"
+        "Succesful edited category"
       );
     };
   }

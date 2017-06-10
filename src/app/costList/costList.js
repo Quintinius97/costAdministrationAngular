@@ -25,19 +25,29 @@ app.controller("costListCtrl", [
         true
       );
     };
-    $scope.openCostModal = function() {
+    $scope.openCostModal = function(id) {
       modalInstance = $uibModal
         .open({
           animation: true,
           ariaLabelledBy: "modal-title",
           ariaDescribedBy: "modal-body",
-          templateUrl: "app/costList/addCostModal.html",
+          templateUrl: "app/costList/costModal.html",
           size: "lg",
-          controller: "costModalCtrl"
+          controller: "costModalCtrl",
+          resolve: {
+            getID: function() {
+              return id;
+            }
+          }
         })
-        .closed.then(function() {
-          $scope.refresh();
-        });
+        .result.then(
+          function() {
+            $scope.refresh();
+          },
+          function() {
+            //catch backdrop click
+          }
+        );
     };
     $scope.refresh();
 

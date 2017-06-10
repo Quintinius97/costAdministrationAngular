@@ -11,16 +11,18 @@
                 <th>Category</th>
 
                 <th class="text-right">Value</th>
-
+                <th></th>
                 <th></th>
             </tr>
             <tr ng-repeat="cost in costs">
                 <td>{{cost.title}} </td>
                 <td>{{cost.desc}} </td>
-                <td>{{cost.date*1000|date:"dd.MM.y HH:mm": '+0300' }}</td>
+                <td>{{cost.date*1000|date:"dd.MM.y HH:mm": 'UTC' }}</td>
                 <td ng-style="{'color':(categories|getCategoryColor:cost.category)}">{{categories|getCategoryName: cost.category }} </td>
                 <td class="text-right" ng-class="cost.price<0?'red':'green'">{{cost.price|number:2}} {{cost.currency}}</td>
-
+                <td class="clickable text-center" ng-click="openCostModal(cost.id)">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </td>
                 <td class="clickable text-center" ng-click="delete(cost.id)">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </td>

@@ -13,11 +13,15 @@
             <tr ng-repeat="category in categories">
                 <td ng-style="{color:category.color}">{{category.name}}</td>
                 <td ng-style="{color:category.color}">{{category.desc}}</td>
-                <td class="clickable" ng-click="openCategoryModal(category.id)">
+                <td ng-if="category.isStd!=1" class="clickable text-center" ng-click="openCategoryModal(category.id)">
                     <i ng-if="category.isStd!=1" class="fa fa-pencil" aria-hidden="true"></i>
                 </td>
-                <td class="clickable text-center" ng-click="delete(category.id)">
+                <td ng-if="category.isStd!=1" class="clickable text-center" ng-click="delete(category.id)">
                     <i ng-if="category.isStd!=1" class="fa fa-times" aria-hidden="true"></i>
+                </td>
+                <td ng-if="category.isStd==1">
+                </td>
+                <td ng-if="category.isStd==1">
                 </td>
             </tr>
         </table>
