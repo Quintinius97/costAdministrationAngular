@@ -37,83 +37,94 @@ module.exports = function(grunt) {
       }
     },
     copy: {
-      main: {
-        css: {
-          files: [
-            {
-              src: 'node_modules/bootstrap/dist/css/bootstrap.min.css',
-              dest: 'src/dependencies/css/bootstrap.min.css'
-            },
-            {
-              src: 'node_modules/font-awesome/css/font-awesome.min.css',
-              dest: 'src/dependencies/css/font-awesome.min.css'
-            },
-            {
-              src: 'node_modules/angular-ui-notification/dist/angular-ui-notification.min.css',
-              dest: 'src/dependencies/css/angular-ui-notification.min.css'
-            }
-          ]
-        },
-        fonts: {
-          files: [
-            {
-              src: 'node_modules/font-awesome/fonts/fontawesome-webfont.woff',
-              dest: 'src/dependencies/fonts/fontawesome-webfont.woff'
-            },
-            {
-              src: 'node_modules/font-awesome/fonts/fontawesome-webfont.woff2',
-              dest: 'src/dependencies/fonts/fontawesome-webfont.woff2'
-            },
-            {
-              src: 'node_modules/font-awesome/fonts/fontawesome-webfont.ttf',
-              dest: 'src/dependencies/fonts/fontawesome-webfont.ttf'
-            }
-          ]
-        },
-        js: {
-          files: [
-            {
-              src: 'node_modules/angular/angular.min.js',
-              dest: 'src/dependencies/js/angular.min.js'
-            },
-            {
-              src: 'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
-              dest: 'src/dependencies/js/ui-bootstrap-tpls.js'
-            },
-            {
-              src: 'node_modules/angular-ui-router/release/angular-ui-router.min.js',
-              dest: 'src/dependencies/js/angular-ui-router.min.js'
-            },
-            {
-              src: 'node_modules/angular-route/angular-route.min.js',
-              dest: 'src/dependencies/js/angular-route.min.js'
-            },
-            {
-              src: 'node_modules/ngstorage/ngStorage.min.js',
-              dest: 'src/dependencies/js/ngStorage.min.js'
-            },
-            {
-              src: 'node_modules/tinycolor/tinycolor.js',
-              dest: 'src/dependencies/js/tinycolor.js'
-            },
-
-            {
-              src: 'node_modules/angular-ui-notification/dist/angular-ui-notification.min.js',
-              dest: 'src/dependencies/js/angular-ui-notification.min.js'
-            }
-          ]
-        }
-      },
-      dist: {
+      //main: {
+      css: {
         files: [
           {
-            expand: true,
-            cwd: 'src/dependencies/fonts/',
-            src: ['**'],
-            dest: 'dist/assets/style/fonts'
+            src: 'node_modules/bootstrap/dist/css/bootstrap.min.css',
+            dest: 'src/dependencies/css/bootstrap.min.css'
+          },
+          {
+            src: 'node_modules/font-awesome/css/font-awesome.min.css',
+            dest: 'src/dependencies/css/font-awesome.min.css'
+          },
+          {
+            src: 'node_modules/angular-ui-notification/dist/angular-ui-notification.min.css',
+            dest: 'src/dependencies/css/angular-ui-notification.min.css'
+          }
+        ]
+      },
+      fonts: {
+        files: [
+          {
+            src: 'node_modules/font-awesome/fonts/fontawesome-webfont.woff',
+            dest: 'src/dependencies/fonts/fontawesome-webfont.woff'
+          },
+          {
+            src: 'node_modules/font-awesome/fonts/fontawesome-webfont.woff2',
+            dest: 'src/dependencies/fonts/fontawesome-webfont.woff2'
+          },
+          {
+            src: 'node_modules/font-awesome/fonts/fontawesome-webfont.ttf',
+            dest: 'src/dependencies/fonts/fontawesome-webfont.ttf'
+          }
+        ]
+      },
+      js: {
+        files: [
+          {
+            src: 'node_modules/angular/angular.min.js',
+            dest: 'src/dependencies/js/angular.min.js'
+          },
+          {
+            src: 'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
+            dest: 'src/dependencies/js/ui-bootstrap-tpls.js'
+          },
+          {
+            src: 'node_modules/angular-ui-router/release/angular-ui-router.min.js',
+            dest: 'src/dependencies/js/angular-ui-router.min.js'
+          },
+          {
+            src: 'node_modules/angular-route/angular-route.min.js',
+            dest: 'src/dependencies/js/angular-route.min.js'
+          },
+          {
+            src: 'node_modules/ngstorage/ngStorage.min.js',
+            dest: 'src/dependencies/js/ngStorage.min.js'
+          },
+          {
+            src: 'node_modules/tinycolor/tinycolor.js',
+            dest: 'src/dependencies/js/tinycolor.js'
+          },
+
+          {
+            src: 'node_modules/angular-ui-notification/dist/angular-ui-notification.min.js',
+            dest: 'src/dependencies/js/angular-ui-notification.min.js'
           }
         ]
       }
+
+      // },
+
+      // dist: {
+
+      //   files: [
+
+      //     {
+
+      //       expand: true,
+
+      //       cwd: 'src/dependencies/fonts/',
+
+      //       src: ['**'],
+
+      //       dest: 'dist/assets/style/fonts'
+
+      //     }
+
+      //   ]
+
+      // }
     },
     htmlmin: {
       // Task
