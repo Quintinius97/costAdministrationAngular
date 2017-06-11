@@ -6,6 +6,8 @@ app.controller("loginCtrl", [
   "$rootScope",
   function($scope, $localStorage, $state, AuthenticationFactory, $rootScope) {
     $scope.islogging = false; //can be used for loading bars
+
+    //logs the user in
     $scope.login = function() {
       $scope.islogging = true;
       AuthenticationFactory.Login(
@@ -21,6 +23,8 @@ app.controller("loginCtrl", [
         }
       );
     };
+
+    //register a user
     $scope.register = function() {
       $scope.islogging = true;
       AuthenticationFactory.Register(

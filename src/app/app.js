@@ -1,6 +1,5 @@
 "use strict";
 
-// Declare app level module which depends on views, and components
 var app = angular
   .module("myApp", [
     "ngRoute",
@@ -17,14 +16,18 @@ var app = angular
     }
   ]);
 app.run(function($http, $rootScope, $localStorage, backend, $state) {
+  //persisten login
   $http.defaults.headers.common.Authorization = $localStorage.currentJWT;
+  //after login the current jwt (1h valid) is validated
   backend.get(
     "verify",
     function(response) {
       if (response.status == 200) {
+        //if valid the user is logged in
         $rootScope.loggedIn = true;
         $state.go("list");
       } else {
+        //else the user is logged out
         $http.defaults.headers.common.Authorization = "";
         $rootScope.loggedIn = false;
         $state.go("login");
@@ -35,6 +38,7 @@ app.run(function($http, $rootScope, $localStorage, backend, $state) {
   );
 });
 app.config(function($stateProvider, NotificationProvider) {
+  //set up routes
   $stateProvider
     .state({
       name: "login",
@@ -54,6 +58,7 @@ app.config(function($stateProvider, NotificationProvider) {
       templateUrl: "app/costList/costList.html",
       controller: "costListCtrl"
     });
+  //set options for success and small error messages
   NotificationProvider.setOptions({
     delay: 4000,
     startTop: 10,

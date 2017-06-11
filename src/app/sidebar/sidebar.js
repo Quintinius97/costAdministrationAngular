@@ -5,6 +5,7 @@ app.controller("sidebarCtrl", [
   "$localStorage",
   "$http",
   function($scope, $rootScope, backend, $localStorage, $http) {
+    //logout function
     $scope.logout = function() {
       delete $localStorage.currentJWT;
       $http.defaults.headers.common.Authorization = "";
