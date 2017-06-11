@@ -102,29 +102,17 @@ module.exports = function(grunt) {
             dest: 'src/dependencies/js/angular-ui-notification.min.js'
           }
         ]
-      }
-
-      // },
-
-      // dist: {
-
-      //   files: [
-
-      //     {
-
-      //       expand: true,
-
-      //       cwd: 'src/dependencies/fonts/',
-
-      //       src: ['**'],
-
-      //       dest: 'dist/assets/style/fonts'
-
-      //     }
-
-      //   ]
-
-      // }
+      },
+      dist: {
+         files: [
+           {
+             expand: true,
+             cwd: 'src/dependencies/fonts/',
+             src: ['**'],
+             dest: 'dist/assets/style/fonts'
+           }
+         ]
+       }
     },
     htmlmin: {
       // Task
